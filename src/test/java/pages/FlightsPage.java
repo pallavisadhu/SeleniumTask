@@ -1,15 +1,13 @@
 package pages;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import tests.TestUtil;
 
@@ -90,6 +88,40 @@ public class FlightsPage {
 	@FindBy(xpath="//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']")
 	WebElement proceedBtn;
 	
+	@FindBy(css=".dweb-commonstyles__FltBtn-sc-13fxsy5-12.fuCQCF.fb.quicksand.wid25.font16")
+	WebElement proceedBtn1;
+	
+	@FindBy(css=".common-elementsstyles__CustSelectTrvl-sc-ilw4bs-9.jVMraT")
+	WebElement selectTitle;
+	
+	@FindBy(css="input[placeholder='First & Middle Name']")
+	WebElement firstName;
+	
+	@FindBy(css="input[placeholder='Last Name']")
+	WebElement lastName;
+	
+	@FindBy(css="input[placeholder='Email']")
+	WebElement email;
+	
+	@FindBy(css=".common-elementsstyles__CustSelectTrvl-sc-ilw4bs-9.bJfThW")
+	WebElement selectCountryCode;
+	
+	@FindBy(css="input[placeholder='Mobile No']")
+	WebElement mobileNo;
+	
+	@FindBy(css=".dweb-commonstyles__ButtonBase-sc-13fxsy5-4.dweb-commonstyles__InsuranceButton-sc-13fxsy5-5.dweb-commonstyles__InsuranceSelectButton-sc-13fxsy5-6.jjNHxX.biOOqn.cgDciw")
+	WebElement travelInsurance;
+	
+	@FindBy(css=".dweb-commonstyles__FltBtn-sc-13fxsy5-12.fuCQCF.width100.fb.quicksand.font16")
+	WebElement proceedToPaymentBtn;
+	
+	@FindBy(xpath="//ul[@class='paymentListCtr']//li//div//span[text()='Mobile Wallets']")
+	WebElement choosePayment;
+	
+	@FindBy(xpath="//span[text()='Amazon Pay']")
+	WebElement amazonPay;
+	
+	
 	
 	public FlightsPage(WebDriver driver) {
 		this.driver = driver;
@@ -164,6 +196,39 @@ public class FlightsPage {
 		bookBtn.click();
 		util.wait_visibilityOfElement(nextBtn).click();
 		util.wait_visibilityOfElement(proceedBtn).click();
+		
+				
+		/*JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 5000);");	
+		js.executeScript("arguments[0].scrollIntoView();", selectTitle);*/
+		
+		util.scrollIntoElement(travelInsurance);
+		travelInsurance.click();
+		util.scrollIntoElement(selectTitle);
+		
+		util.selectItemByValue(selectTitle, "Mrs");
+		firstName.sendKeys("ABC");
+		lastName.sendKeys("XYZ");
+		email.sendKeys("testproj@test.com");
+		util.selectItemByVisibleText(selectCountryCode, "United States ( +1 )");
+		mobileNo.sendKeys("4029992170");
+		proceedBtn1.click();
+		
+		util.scrollIntoElement(proceedToPaymentBtn);
+		proceedToPaymentBtn.click();
+		
+		util.scrollDown();
+				
+		//util.scrollIntoElement(choosePayment);
+		choosePayment.click();
+		
+		/*JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", choosePayment);
+		choosePayment.click();*/
+		
+		util.scrollDown();
+		amazonPay.click();
+		
 	}
 	
 }
