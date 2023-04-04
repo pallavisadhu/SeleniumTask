@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-04-03T22:49:15 CDT" name="Suite" finished-at="2023-04-03T22:49:41 CDT" duration-ms="26263">
+  <suite started-at="2023-04-04T10:53:48 CDT" name="Suite" finished-at="2023-04-04T10:54:12 CDT" duration-ms="24389">
     <groups>
     </groups>
-    <test started-at="2023-04-03T22:49:15 CDT" name="Test" finished-at="2023-04-03T22:49:41 CDT" duration-ms="26263">
+    <test started-at="2023-04-04T10:53:48 CDT" name="Test" finished-at="2023-04-04T10:54:12 CDT" duration-ms="24389">
       <class name="tests.FlightsTest">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-03T22:48:59 CDT" name="initialize" finished-at="2023-04-03T22:49:15 CDT" duration-ms="16499" status="PASS">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-04T10:53:30 CDT" name="initialize" finished-at="2023-04-04T10:53:48 CDT" duration-ms="17870" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-03T22:49:15 CDT" name="beforeTest" finished-at="2023-04-03T22:49:15 CDT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-04T10:53:48 CDT" name="beforeTest" finished-at="2023-04-04T10:53:48 CDT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="init()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-03T22:49:15 CDT" name="init" finished-at="2023-04-03T22:49:15 CDT" duration-ms="74" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-04T10:53:48 CDT" name="init" finished-at="2023-04-04T10:53:48 CDT" duration-ms="185" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="verifyBooking()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-03T22:49:15 CDT" name="verifyBooking" finished-at="2023-04-03T22:49:41 CDT" duration-ms="26081" status="PASS">
+        <test-method signature="verifyBooking()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-04T10:53:48 CDT" name="verifyBooking" finished-at="2023-04-04T10:54:12 CDT" duration-ms="24016" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyBooking -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-03T22:49:41 CDT" name="afterTest" finished-at="2023-04-03T22:49:41 CDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:tests.FlightsTest@3e8c3cb]" started-at="2023-04-04T10:54:12 CDT" name="afterTest" finished-at="2023-04-04T10:54:12 CDT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

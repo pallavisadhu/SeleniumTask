@@ -11,10 +11,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import tests.TestUtil;
+
 public class FlightsPage {
 	
 	WebDriver driver;
-	WebDriverWait wait;
+	TestUtil util;
+	WebElement ele;
+	List<WebElement> list;
+
 	
 	@FindBy(css="div[class='sc-jQrDum hXFakb'] p[class='sc-eLwHnm hHxEGr fswWidgetPlaceholder']")
 	WebElement flightsFrom;
@@ -70,45 +75,45 @@ public class FlightsPage {
 	@FindBy(xpath="//span[text()='PRICE']")
 	List<WebElement> priceList;
 	
-	/*@FindBy(xpath="//xpath[@id='0184']")
-	WebElement price1;
+	@FindBy(css="span[aria-label='Next Month']")
+	WebElement nextMonth;
 	
-	@FindBy(xpath="//xpath[@id='0283']")
-	WebElement price2;*/
+	@FindBy(xpath="//div[@class='layoutstyles__Wrapper-sc-am2mfo-0 bYOwwR']")
+	List<WebElement> priceCards;
 	
 	@FindBy(xpath="//input[@value='BOOK']")
 	WebElement bookBtn;
 	
-	/*@FindBy(xpath="//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']")
+	@FindBy(xpath="//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']")
 	WebElement nextBtn;
 	
 	@FindBy(xpath="//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']")
-	WebElement proceedBtn;*/
+	WebElement proceedBtn;
 	
 	
 	public FlightsPage(WebDriver driver) {
 		this.driver = driver;
-		wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+		util = new TestUtil();
 	}
 	
 	public void bookFlight(){
 		closeBtn.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".sc-jlwm9r-1.dRQhOp"))).click();
+		util.wait_visibilityOfElement(closeBtn1).click();
+		
 		roundtrip.click();
 		
 		flightsFrom.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated
-				(By.xpath("//div[@class='sc-GEbAx hOdrcL']//span[text()='From']//following-sibling::input"))).sendKeys("Delhi");
+		util.wait_visibilityOfElement(departureInput).sendKeys("Delhi");;
 		
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='sc-ctqQKy evOxvK']")));
+		list = util.wait_visibilityOfAllElements(cityList);
 		try {
-		for(WebElement e : cityList) {
+		for(WebElement e : list) {
 			if(e.getText().contains("New Delhi, India")) {
 				e.click();
 			}
 		}
 		}catch(StaleElementReferenceException e1) {
-			for(WebElement e : cityList) {
+			for(WebElement e : list) {
 				if(e.getText().contains("New Delhi, India")) {
 					e.click();
 				}
@@ -116,15 +121,15 @@ public class FlightsPage {
 		}
 		
 		returnInput.sendKeys("Mumbai");
+		list = util.wait_visibilityOfAllElements(cityList);
 
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='sc-ctqQKy evOxvK']")));
 		try {
-		for(WebElement e : cityList) {
+		for(WebElement e : list) {
 			if(e.getText().contains("Mumbai, India"))
 				e.click();
 		}
 		}catch(StaleElementReferenceException e1) {
-			for(WebElement e : cityList) {
+			for(WebElement e : list) {
 				if(e.getText().contains("Mumbai, India"))
 					e.click();
 			}
@@ -132,7 +137,7 @@ public class FlightsPage {
 		
 		while(!driver.findElement(By.xpath("(//div[@class='DayPicker-Month']//div[@class='DayPicker-Caption']//div)[1]")).getText().equals("June 2023"))
 		{
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("span[aria-label='Next Month']"))).click();
+			util.wait_visibilityOfElement(nextMonth).click();
 		}
 		for(WebElement day : dayList) {
 			if(day.getText().equals("10")) {
@@ -145,22 +150,20 @@ public class FlightsPage {
 		//btnDone.click();
 		btnDone1.click();
 		searchFlights.click();
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[text()='PRICE']")));
 		
-		priceList.get(0).click();
-		priceList.get(1).click();
+		list = util.wait_visibilityOfAllElements(priceList);
+		list.get(0).click();
+		list.get(1).click();
+		
+		list = util.wait_visibilityOfAllElements(priceCards);
+		
+		list.get(0).click();
+		list.get(1).click();
 	
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@for='0184']"))).click();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@for='0283']"))).click();
 		
 		bookBtn.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated
-				(By.xpath("//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']"))).click();
-		//nextBtn.click();
-		wait.until(ExpectedConditions.presenceOfElementLocated
-				(By.xpath("//button[@class='dweb-commonstyles__FltBtn-sc-13fxsy5-12 fwrRNe fb quicksand font16']"))).click();
-		//proceedBtn.click();
-		
+		util.wait_visibilityOfElement(nextBtn).click();
+		util.wait_visibilityOfElement(proceedBtn).click();
 	}
 	
 }
